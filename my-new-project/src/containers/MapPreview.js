@@ -48,9 +48,28 @@ export default class MapPreview extends Component {
                 longitudeDelta: 0.003,
             },
             markers: markers,
+            test: "sim",
         };
     }
+    
     render() {
+        const test = (image) => {
+            switch(image){
+                case "station":
+                    return (require("../../Images/station.png"));
+                case "sim":
+                    return (require("../../Images/sim.png"));
+                case "food":
+                    return (require("../../Images/food.png"));
+                case "tourism":
+                    return (require("../../Images/tourism.png"));
+                case "wc":
+                    return (require("../../Images/wc.png"));
+                case "wifi":
+                    return (require("../../Images/wifi.png"));
+            }
+        }
+        
         return(
                 <
                 MapView style = {
@@ -77,10 +96,13 @@ export default class MapPreview extends Component {
                 }>
 
                 {
-                    this.state.markers.map((marker) => ( <
+                    this.state.markers.map((marker) => ( 
+                        <
                         Marker key = {
                             marker.id
                         }
+                        
+                        onPress={e => test(marker.image)}
 
                         title = {
                             marker.title
@@ -89,8 +111,9 @@ export default class MapPreview extends Component {
                         coordinate = {
                             marker.latlng
                         }
+                        
                         image = {
-                            require("../../Images/station.png")
+                            test(marker.image)
                         }
                         />
                     ))

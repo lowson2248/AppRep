@@ -68,7 +68,7 @@ export default class App extends Component {
         drawerPosition={DrawerLayoutAndroid.positions.Right}
         renderNavigationView={()=> drawerView}>
         
-        <Text>Test</Text>
+        <MapPreview />
 
       </DrawerLayoutAndroid>
 
